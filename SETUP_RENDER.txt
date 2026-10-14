@@ -1,0 +1,16 @@
+GHOST MEDIA RESOLVER - RENDER READY
+
+Isi folder ini upload ke satu repository GitHub.
+Di Render pilih New > Blueprint, hubungkan repository itu, lalu Deploy Blueprint.
+Saat Render meminta RESOLVER_TOKEN, isi secret panjang milikmu sendiri dan simpan karena nilai yang sama dipakai di Cloudflare Worker sebagai MEDIA_RESOLVER_TOKEN.
+
+Setelah deploy sukses, tes URL:
+https://NAMA-SERVICE.onrender.com/health
+
+Harus menghasilkan JSON dengan ok:true.
+
+Lalu di project Ghost Studio V18:
+1. Isi MEDIA_RESOLVER_URL di wrangler.toml dengan URL Render tanpa /health.
+2. Jalankan: npx wrangler secret put MEDIA_RESOLVER_TOKEN
+3. Masukkan secret yang SAMA dengan RESOLVER_TOKEN di Render.
+4. Jalankan: npx wrangler deploy

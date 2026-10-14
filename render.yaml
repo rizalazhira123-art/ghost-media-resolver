@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: ghost-media-resolver
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "10000"
+      - key: RESOLVER_TOKEN
+        sync: false
+      - key: MAX_CONCURRENT
+        value: "2"
+      - key: MAX_IMPORT_MB
+        value: "50"
+      - key: MAX_DURATION_SECONDS
+        value: "600"
